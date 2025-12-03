@@ -74,8 +74,11 @@ public:
         : livre(id, titre, dispo, auteur, Npage), audio(id, titre, dispo, publicateur, duree) {}
 
     void afficher() override {
-        livre::afficher();
-        audio::afficher();
+          cout << "Le livre \"" << titre
+             << "\" de l'auteur " << auteur
+             << " contient " << Npage << " pages."
+             << endl;
+       cout << "Audio: " << titre <<  ", publie par " << publicateur <<  ", duree: " << duree << endl;
     }
 };
 
