@@ -61,13 +61,21 @@ class audio : public media {
 private:
     string publicateur;
     int duree;
-public:
-    
+public:    
     audio(int t,  string p, bool a,  string art, int d)
         : media(t, p, a), publicateur(art), duree(d) {}
-
     void afficher() override {
         cout << "Audio: " << titre <<  ", publie par " << publicateur <<  ", duree: " << duree << endl;
+    }
+};
+class audiobook: public livre, public audio {
+public:
+    audiobook(int id, string titre, bool dispo, string auteur, int Npage, string publicateur, int duree)
+        : livre(id, titre, dispo, auteur, Npage), audio(id, titre, dispo, publicateur, duree) {}
+
+    void afficher() override {
+        livre::afficher();
+        audio::afficher();
     }
 };
 
@@ -90,6 +98,6 @@ int main()
     delete m3;
 
     cout << "\n---- FIN DES TESTS ----" << endl;
-
+    
     return 0;
 }
