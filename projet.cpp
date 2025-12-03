@@ -74,11 +74,8 @@ public:
         : livre(id, titre, dispo, auteur, Npage), audio(id, titre, dispo, publicateur, duree) {}
 
     void afficher() override {
-          cout << "Le livre \"" << titre
-             << "\" de l'auteur " << auteur
-             << " contient " << Npage << " pages."
-             << endl;
-       cout <<  "publie par " << publicateur <<  ", duree: " << duree << endl;
+        livre::afficher();
+        audio::afficher();
     }
 };
 
@@ -101,6 +98,6 @@ int main()
     delete m3;
 
     cout << "\n---- FIN DES TESTS ----" << endl;
-    
+system("pause");    
     return 0;
 }
