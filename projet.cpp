@@ -78,7 +78,7 @@ public:
              << "\" de l'auteur " << auteur
              << " contient " << Npage << " pages."
              << endl;
-       cout << "Audio: " << titre <<  ", publie par " << publicateur <<  ", duree: " << duree << endl;
+       cout <<  "publie par " << publicateur <<  ", duree: " << duree << endl;
     }
 };
 
