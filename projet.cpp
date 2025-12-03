@@ -13,6 +13,20 @@ public:
     virtual ~media() { cout << "deleted" << endl; }
     virtual void afficher() = 0;
 };
+//===== TELECHARGEABLE =====//
+class Telechargeable {
+protected:
+    double tailleMo; // Taille en Mégaoctets
+    string format;   // ex: MP3, PDF, MP4
+
+public:
+    Telechargeable(double taille, string fmt) : tailleMo(taille), format(fmt) {}
+
+    void afficherTelechargement() const {
+        cout << "[Info Fichier] Format: " << format 
+             << " | Taille: " << tailleMo << " Mo" << endl;
+    }
+};
 
 // ===== LIVRE =====
 class livre : public virtual media {
@@ -63,6 +77,19 @@ public:
              << ", Publié par: " << publicateur
              << ", Durée: " << duree << endl;
     }
+};
+class Ebook : public livre, public Telechargeable {
+Ebook(int id, string titre, string auteur, int Npage, double taille, string format)
+        : media(id, titre, true), // Init du grand-parent
+          livre(id, titre, true, auteur, Npage), // Init du parent nature
+          Telechargeable(taille, format) {} // Init de la caractéristique
+
+    void afficher() override {
+        cout << "--- EBOOK ---" << endl;
+        livre::afficher();           // Affiche les infos livre
+        afficherTelechargement();    // Affiche les infos fichier
+    }
+
 };
 
 // ===== AUDIOBOOK =====
