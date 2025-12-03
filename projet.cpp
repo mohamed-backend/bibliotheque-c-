@@ -79,7 +79,8 @@ public:
     }
 };
 class Ebook : public livre, public Telechargeable {
-Ebook(int id, string titre, string auteur, int Npage, double taille, string format)
+public:
+    Ebook(int id, string titre, string auteur, int Npage, double taille, string format)
         : media(id, titre, true), // Init du grand-parent
           livre(id, titre, true, auteur, Npage), // Init du parent nature
           Telechargeable(taille, format) {} // Init de la caractéristique
@@ -129,11 +130,14 @@ int main() {
     media* m3 = new audio(3, "Podcast Tech", true, "Houssam Studio", 45);
     m3->afficher();
     delete m3;
-
-    cout << "\n---- TEST AUDIOBOOK ----\n";
-    media* m4 = new audiobook(4, "LOTR", true, "Tolkien", 500, "StudioX", 120);
+cout << "\n---- TEST EBOOK ----\n";
+    media* m4 = new Ebook(4, "1984", "George Orwell", 328, 2.5, "PDF");
     m4->afficher();
     delete m4;
-
+    cout << "\n---- TEST AUDIOBOOK ----\n";
+    media* m5 = new audiobook(4, "LOTR", true, "Tolkien", 500, "StudioX", 120);
+    m5->afficher();
+    delete m5;
+system("pause");
     return 0;
 }
